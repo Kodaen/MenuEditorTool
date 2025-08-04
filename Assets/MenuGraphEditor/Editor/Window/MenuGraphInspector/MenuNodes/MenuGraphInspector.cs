@@ -6,13 +6,17 @@ namespace MenuGraph.Editor
 	using UnityEngine.UIElements;
 	using VisualElementHelper;
 
+	/// <summary>
+	/// The <see cref="VisualElement"/> for the "inspector" (left panel) of the Menu Editor Graph.
+	/// <para>
+	/// Currently only contains the <see cref="MenuNodesHierarchy"/> used to list menu prefab assets.
+	/// </para>
+	/// </summary>
 	[UxmlElement]
 	internal sealed partial class MenuGraphInspector : VisualElement, IDisposable
 	{
 		#region Constants
 		private const string MENUS_HIERARCHY_UXML_ID = "MenusHierarchy";
-
-		private const char SEPARATOR = '/';
 		#endregion Constants
 
 		#region Fields
@@ -41,6 +45,7 @@ namespace MenuGraph.Editor
 		}
 		#endregion IDisposable
 
+		#region Privates
 		private void FillMenusHierarchy()
 		{
 			string[] prefabGuids = AssetDatabase.FindAssets("t:Prefab");
@@ -57,6 +62,7 @@ namespace MenuGraph.Editor
 				}
 			}
 		}
+		#endregion Privates
 		#endregion Methods
 	}
 }

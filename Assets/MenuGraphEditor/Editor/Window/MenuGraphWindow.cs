@@ -4,6 +4,15 @@ namespace MenuGraph.Editor
 	using UnityEngine.UIElements;
 	using VisualElementHelper;
 
+	/// <summary>
+	/// This is the <see cref="EditorWindow"/> for the Menu Graph Editor.
+	/// This contains:
+	/// <list type="bullet">
+	/// <item>The node editor canvas with the menus, the link between them etc;</item>
+	/// <item>An inspector section to manage menu;</item>
+	/// <item>A toolbar, for utility stuff.</item>
+	/// </list>
+	/// </summary>
 	internal sealed class MenuGraphWindow : EditorWindow
 	{
 		#region Fields
@@ -14,6 +23,7 @@ namespace MenuGraph.Editor
 
 		#region Methods
 		#region Statics
+		// TODO-16: Change the path.
 		[MenuItem("Window/Menu Graph Editor", priority = -10000)]
 		internal static void ShowWindow()
 		{
@@ -21,6 +31,7 @@ namespace MenuGraph.Editor
 		}
 		#endregion Statics
 
+		#region Lifecycle
 		private void CreateGUI()
 		{
 			rootVisualElement.LoadUXML();
@@ -45,10 +56,12 @@ namespace MenuGraph.Editor
 			_menuGraphCanvas?.Dispose();
 			_menuGraphCanvas = null;
 		}
+		#endregion Lifecycle
 
+		#region Privates
 		private MenuGraph SelectMenuGraph()
 		{
-			// TODO : Currently only take the first MenuGraph found in project.
+			// TODO-4 : Currently only take the first MenuGraph found in project.
 			string[] assetsGuids = AssetDatabase.FindAssets("t:MenuGraph");
 
 			if (assetsGuids.Length == 0)
@@ -59,6 +72,7 @@ namespace MenuGraph.Editor
 			string manuGraphPath = AssetDatabase.GUIDToAssetPath(assetsGuids[0]);
 			return AssetDatabase.LoadAssetAtPath<MenuGraph>(manuGraphPath);
 		}
+		#endregion Privates
 		#endregion Methods
 	}
 }

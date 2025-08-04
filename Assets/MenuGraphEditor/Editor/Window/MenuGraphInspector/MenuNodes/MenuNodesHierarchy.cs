@@ -4,6 +4,10 @@ namespace MenuGraph.Editor
 	using System.Collections.Generic;
 	using UnityEngine.UIElements;
 
+	// TODO-8 : Maybe retrieve the Assets in this VisualEment instead of in MenuGraphInspector.
+	/// <summary>
+	/// The <see cref="VisualElement"/> which display the menu prefabs assets in a folder tree view.
+	/// </summary>
 	internal sealed class MenuNodesHierarchy : VisualElement, IDisposable
 	{
 		#region Constants
