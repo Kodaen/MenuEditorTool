@@ -134,24 +134,27 @@ namespace MenuGraph.Editor
 		}
 
 		private void CreateOutputPorts()
-		{
-			_outputPorts = new List<Port>();
+        {
+            _outputPorts = new List<Port>();
 
-			foreach (MenuUI.MenuNodeAction menuAction in _menuNode.TargetMenu.MenuActions)
-			{
-				if (menuAction.IsValid() == false)
-				{
-					continue;
-				}
+            foreach (MenuUI.MenuNodeAction menuAction in _menuNode.TargetMenu.MenuActions)
+            {
+                if (menuAction.IsValid() == false)
+                {
+                    continue;
+                }
 
-				Port outputPort = InstantiatePort(Orientation.Horizontal, Direction.Output, Port.Capacity.Single, typeof(Port));
-				outputPort.portName = menuAction.EditorName;
-				outputContainer.Add(outputPort);
-				_outputPorts.Add(outputPort);
-			}
-		}
+                Port outputPort = InstantiatePort(Orientation.Horizontal, Direction.Output, Port.Capacity.Single, typeof(Port));
+                outputPort.portName = menuAction.EditorName;
+                outputContainer.Add(outputPort);
 
-		private void OnThumbnailWidthChanged(float newThumbnailWidth)
+                CreateSeparator();
+
+                _outputPorts.Add(outputPort);
+            }
+        }
+
+        private void OnThumbnailWidthChanged(float newThumbnailWidth)
 		{
 			Rect rect = GetPosition();
 			SetPosition(new Rect(_menuNode.EditorPosition.x, _menuNode.EditorPosition.y, rect.width, rect.height));
@@ -161,6 +164,15 @@ namespace MenuGraph.Editor
 		{
 			Selection.activeObject = _menuNode.TargetMenu.gameObject;
 		}
-		#endregion Methods
-	}
+        #endregion Methods
+
+        #region AestheticVisualElements
+        private void CreateSeparator()
+        {
+            VisualElement separator = new();
+            separator.name = "HorizontalDivider";
+            outputContainer.Add(separator);
+        }
+        #endregion AestheticVisualElements
+    }
 }

@@ -1,7 +1,36 @@
-GridBackground
-{
-	--grid-background-color: rgb(40, 40, 40);
-	--line-color: rgba(193, 196, 192, 0.1);
-	--thick-line-color: rgba(193, 196, 192, 0.1);
-	--spacing: 15;
+GridBackground {
+    --grid-background-color: rgb(40, 40, 40);
+    --line-color: rgba(193, 196, 192, 0.1);
+    --thick-line-color: rgba(193, 196, 192, 0.1);
+    --spacing: 15;
+}
+
+.node {
+    min-width: 167px;
+}
+
+#contents {
+    background-color: var(--unity-colors-default-background);
+}
+
+#HorizontalDivider {
+    height: 1px;
+    margin-right: 10px;
+    margin-left: 10px;
+    background-color: var(--unity-colors-separator-background);
+}
+
+#AddAction {
+    margin-top: 25px;
+    align-self: center;
+    color: var(--unity-colors-helpbox-text);
+}
+
+#AddAction:hover {
+    color: var(--unity-colors-tabview_tab-text-checked-hover);
+    -unity-font-style: bold;
+}
+
+MenuNodeThumbnailImage {
+    align-self: center;
 }
